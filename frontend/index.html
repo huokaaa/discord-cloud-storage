@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-cloud"></i>
+                <h1>Discord Cloud</h1>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" class="btn-icon" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-info">
+                    <i class="fas fa-user"></i>
+                    <span>Storage Pribadi</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Upload Area -->
+        <section class="upload-section">
+            <div class="upload-card">
+                <div class="upload-area" id="dropArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop File Anda</h3>
+                    <p>atau klik untuk memilih file</p>
+                    <input type="file" id="fileInput" multiple style="display: none;">
+                    <button class="btn-primary" id="selectFilesBtn">
+                        <i class="fas fa-folder-open"></i> Pilih File
+                    </button>
+                    <p class="file-limit">Maksimum 25MB per file</p>
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Mengupload...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- File List -->
+        <section class="files-section">
+            <div class="section-header">
+                <h2><i class="fas fa-folder"></i> File Anda</h2>
+                <div class="actions">
+                    <button id="refreshBtn" class="btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Cari file...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Memuat file...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-folder-open"></i>
+                <h3>Tidak ada file</h3>
+                <p>Upload file pertama Anda!</p>
+            </div>
+
+            <!-- Files Grid -->
+            <div class="files-grid" id="filesGrid">
+                <!-- File items akan diisi oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Discord Cloud Storage - Untuk penggunaan pribadi</p>
+            <p class="storage-info">
+                <i class="fas fa-database"></i>
+                <span id="storageCount">0 file</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal Preview -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="previewImage" src="" alt="Preview">
+            <div class="modal-actions">
+                <button id="downloadBtn" class="btn-primary">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
+  
